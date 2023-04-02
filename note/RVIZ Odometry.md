@@ -64,6 +64,29 @@ $ rqt_graph
 
 odom토픽의 대한 정보와 타입이 다 나오며 아직 Subscriber가 없기때문에 rqt_graph에서는 publisher노드만 있다. 
 
-
-
 + 실습을 진행하면 됨.
+
+  
+
+# 실습
+
+## 기존 ex_urdf 패키지 이용
+
++ ex_urdf 패키지에서 작업하고
++ 소스코드 폴더 안에 위 내용에 따라 진행하면된다. 
++ launch폴더 안에는 odom_pub.launch를 만들면된다. 
+
+## launch 파일 만들기
+
+``` XML
+<launch>
+    ... 기존 파일에 새로운 줄을 추가
+    <node name="odom_publisher" pkg="ex_urdf" type="odom_publisher_ex.py" />
+
+</launch>
+```
+
+```bash
+$ roslaunch ex_urdf odom_pub.launch
+```
+
