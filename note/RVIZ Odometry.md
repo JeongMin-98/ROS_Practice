@@ -62,7 +62,7 @@ $ rostopic info odom
 $ rqt_graph
 ```
 
-odom토픽의 대한 정보와 타입이 다 나오며 아직 Subscriber가 없기때문에 rqt_graph에서는 publisher노드만 있다. 
+odom토픽의 대한 정보와 타입이 다 나오며 아직 Subscriber가 없기 때문에 rqt_graph에서는 publisher노드만 있다. 
 
 + 실습을 진행하면 됨.
 
