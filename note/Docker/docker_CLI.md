@@ -27,3 +27,26 @@ docker ps -a
 ps는 기본적으로 작동중인 docker process를 출력한다. 
 > -a 옵션을 추가해서 종료된 process 상태로 확인이 가능하다. 
 
+## run 
+run은 새롭게 container를 실행하는 명령어
+
+```bash
+docker ps -a --format '{{.ID}}' | xargs docker rm
+
+# 서로 다른 터미널에서 docker run을 실행해보자
+docker run -it --name ubuntu_top ubuntu "top" "-d 1"
+
+# 이미 생성된 container이기 때문에 명령 실패
+docker run -it --name ubuntu_top ubuntu "top" "-d 1"
+
+# 이름은 항상 다르게 생성한다. 
+docker run -it --name ubuntu_top2 ubuntu "top" "-d 1" 
+# 하지만 서로 다른 컨테이너에서 실행되고 있다. 
+```
+
+## exec
+기존에 존재하는 container에서 top을 실행하는 명령
+
+```bash
+docker exec -it ubuntu_top top "-d 0.2"
+```
