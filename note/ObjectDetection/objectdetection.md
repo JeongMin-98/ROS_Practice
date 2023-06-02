@@ -95,6 +95,24 @@ Bounding box, objectness score and class score를 사용하여 객체를 탐지한다.
 ## [Non-Max Suppression](https://towardsdatascience.com/non-maximum-suppression-nms-93ce178e177c)
 이 과정을 거치지 않으면 바운딩 박스는 여러개 표시될것이다. 그렇기 때문에 이 과정을 적용하여 객체 형태에 가장 적절히 매치되는 바운딩 박스를 선택한다. 
 
+## evaluation metric
+![metric](https://assets-global.website-files.com/5d7b77b063a9066d83e1209c/63528aff738b370197906164_Precision%2C%20recall.png)
++ Precision: 검출한 결과값에 대해서 실제로 결과값이 알맞게 검출된 것을 의미함.
++ Recall: 전체 정답값 중에 실제로 검출해서 맞춘 비율
 
+  + TP(True Positive): 옳은 검출 => 검출하였는데 맞은 결과 값
+  + FP(False Positivie): 틀린 검출 => 검출하였는데 틀린 값
+  + FN(False Negative): 미검출중 맞은것 => 검출이 되어야 하는데 검출이 안된 경우
+  + TN(True Negative): 미검출중 틀린것 => 검출되지 않아야하는 것이 검출이 안된 경우
 
+> object detection에서는 IoU를 사용한다. 
 
+![f1 score](https://velog.velcdn.com/images%2Fjadon%2Fpost%2Ff06f1d40-605d-4f13-b6ce-35c220c82968%2Fimage.png)
++ F1 Score: Precision과 recall만 사용하여 모델을 평가하면 좋은 결과가 아니기 때문에 두가지 경우를 혼합하여 사용한다.
+
+> Precision과 recall간의 상관관계가 존재한다. 
+
+1. high recall + high precision: 모델의 성능이 매우 좋은 경우(원하는 데로 검출된것)
+2. low recall + high precision: 객체 검출이 잘 이루어지지 못한 경우이다. 검출했는데 객체를 놓친것이다.
+3. high recall + low precision: 바운딩 박스는 잘 검출했지만 다른 클래스에 있는 것으로 객체를 탐지하는 경우
+4. low recall + low precision: 모델의 성능이 매우 떨어지는 경우 (아무런 객체 탐지도 못함)
